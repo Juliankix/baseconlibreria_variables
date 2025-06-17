@@ -2,7 +2,6 @@ import sqlite3
 import customtkinter as ctk
 from tkinter import messagebox
 
-# Conexión y creación de tabla
 conn = sqlite3.connect('basedatos.db')
 cursor = conn.cursor()
 cursor.execute("""
@@ -16,7 +15,6 @@ CREATE TABLE IF NOT EXISTS clientes (
 """)
 conn.commit()
 
-# Funciones
 def guardar_cliente():
     nombre = entry_nombre.get()
     correo = entry_correo.get()
@@ -91,7 +89,6 @@ def limpiar_campos():
     entry_direccion.delete(0, ctk.END)
     entry_telefono.delete(0, ctk.END)
 
-# Configuración visual
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
@@ -99,7 +96,6 @@ ventana = ctk.CTk()
 ventana.title("CRUD Clientes")
 ventana.geometry("400x600")
 
-# Campos de entrada
 ctk.CTkLabel(ventana, text="ID (para actualizar o eliminar)").pack(pady=5)
 entry_id = ctk.CTkEntry(ventana, width=300)
 entry_id.pack()
@@ -120,7 +116,6 @@ ctk.CTkLabel(ventana, text="Teléfono").pack(pady=5)
 entry_telefono = ctk.CTkEntry(ventana, width=300)
 entry_telefono.pack()
 
-# Botones
 ctk.CTkButton(ventana, text="Guardar Cliente", command=guardar_cliente).pack(pady=10)
 ctk.CTkButton(ventana, text="Ver Clientes", command=ver_clientes).pack(pady=5)
 ctk.CTkButton(ventana, text="Detalle Cliente", command=detalle_cliente).pack(pady=5)
